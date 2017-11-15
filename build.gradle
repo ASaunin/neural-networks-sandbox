@@ -1,0 +1,29 @@
+subprojects {
+
+    group 'com.asaunin'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    configurations {
+        testOutput.extendsFrom testCompile
+    }
+
+    // this turns logging on in tests:
+//    test.testLogging.showStandardStreams = false
+
+}
+
+task Wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '4.3.1'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}

@@ -1,0 +1,14 @@
+dependencies {
+
+    compile(
+            ['org.slf4j:slf4j-api:1.7.19'],
+            ['ch.qos.logback:logback-classic:1.2.3'],
+            ['org.projectlombok:lombok:1.16.18']
+    )
+
+    testOutput(
+            ['junit:junit:4.12'],
+            ['org.assertj:assertj-core:3.8.0']
+    )
+
+}
