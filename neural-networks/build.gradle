@@ -1,7 +1,8 @@
 dependencies {
 
     compile(
-            [project(path: ":core")]
+            [project(path: ":core")],
+            ['ch.qos.logback:logback-classic:1.2.3']
     )
 
     testCompile(

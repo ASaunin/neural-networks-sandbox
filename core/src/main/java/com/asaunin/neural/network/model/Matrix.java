@@ -1,4 +1,4 @@
-package com.asaunin.neural.network.hopfield;
+package com.asaunin.neural.network.model;
 
 import lombok.ToString;
 
@@ -15,6 +15,14 @@ public class Matrix {
         this.values = values;
     }
 
+    public int rows() {
+        return values.length;
+    }
+
+    public int columns() {
+        return values[0].length;
+    }
+
     public Matrix(Vector vector) {
         final int size = vector.size();
         values = new double[size][size];
@@ -26,6 +34,14 @@ public class Matrix {
                 }
             }
         }
+    }
+
+    public Vector get(int i) {
+        return new Vector(values[i]);
+    }
+
+    public double get(int i, int j) {
+        return values[i][j];
     }
 
     public Vector multiply(Vector vector) {

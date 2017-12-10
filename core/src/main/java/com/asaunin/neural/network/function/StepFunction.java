@@ -4,7 +4,7 @@ public class StepFunction implements ActivationFunction {
 
     @Override
     public double calculate(double value) {
-        return value >= 0.0 ? 1.0 : -1.0;
+        return value >= 1.0 ? 1.0 : 0.0;
     }
 
 }

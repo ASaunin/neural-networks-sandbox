@@ -1,6 +1,8 @@
 package com.asaunin.neural.network.hopfield;
 
-import com.asaunin.neural.network.function.StepFunction;
+import com.asaunin.neural.network.function.SignFunction;
+import com.asaunin.neural.network.model.Matrix;
+import com.asaunin.neural.network.model.Vector;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -14,7 +16,7 @@ public class HopfieldNetwork {
         this.matrix = new Matrix(size);
     }
 
-    public HopfieldNetwork train(Vector vector) {
+    public HopfieldNetwork train(NormalizedVector vector) {
         final Vector biPattern = vector.validate(size);
 
         matrix = new Matrix(biPattern)
@@ -24,12 +26,12 @@ public class HopfieldNetwork {
         return this;
     }
 
-    public boolean validate(Vector pattern) {
+    public boolean predict(NormalizedVector pattern) {
         final Vector biPattern = pattern.validate(size);
 
         final Vector result = matrix
                 .multiply(biPattern)
-                .apply(new StepFunction());
+                .apply(new SignFunction());
 
         for (int i = 0; i < size; ++i) {
             if (biPattern.get(i) != result.get(i)) {
@@ -41,4 +43,5 @@ public class HopfieldNetwork {
         log.info("Pattern {} recognized successfully", pattern);
         return true;
     }
+
 }

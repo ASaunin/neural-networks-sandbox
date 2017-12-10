@@ -1,4 +1,4 @@
-package com.asaunin.neural.network.hopfield;
+package com.asaunin.neural.network.model;
 
 import com.asaunin.neural.network.function.ActivationFunction;
 import lombok.ToString;
@@ -6,11 +6,10 @@ import lombok.ToString;
 @ToString
 public class Vector {
 
-    private double[] values;
+    protected double[] values;
 
     public Vector(double[] values) {
         this.values = values;
-        normalize();
     }
 
     public Vector(int size) {
@@ -23,7 +22,6 @@ public class Vector {
             doubles[i] = pattern[i];
         }
         return new Vector(doubles);
-
     }
 
     public Vector validate(int expectedSize) throws IllegalArgumentException {
@@ -34,12 +32,6 @@ public class Vector {
                             values.length, expectedSize));
         }
         return this;
-    }
-
-    public void normalize() {
-        for (int i = 0; i < values.length; i++) {
-            values[i] = (values[i] <= 0.0) ? -1.0 : 1.0;
-        }
     }
 
     public int size() {
@@ -54,7 +46,7 @@ public class Vector {
         values[index] = value;
     }
 
-    public Vector apply(ActivationFunction func) {
+    public <T extends ActivationFunction> Vector apply(T func) {
         values = func.calculate(values);
         return this;
     }
