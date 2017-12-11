@@ -1,6 +1,6 @@
 package com.asaunin.neural.network.function;
 
-public class StepFunction implements ActivationFunction {
+public final class StepFunction implements ActivationFunction {
 
     @Override
     public double calculate(double value) {

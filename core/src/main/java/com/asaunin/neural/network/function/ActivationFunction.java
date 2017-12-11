@@ -5,12 +5,10 @@ public interface ActivationFunction {
 
     double calculate(double value);
 
-    default double[] calculate(double[] values) {
-        double[] output = new double[values.length];
+    default void calculate(double[] values) {
         for (int i = 0; i < values.length; i++) {
-            output[i] = calculate(values[i]);
+            values[i] = calculate(values[i]);
         }
-        return output;
     }
 
 }

@@ -12,8 +12,8 @@ public class NormalizedVector extends Vector {
     }
 
     private void normalize() {
-        for (int i = 0; i < values.length; i++) {
-            values[i] = (values[i] <= 0.0) ? -1.0 : 1.0;
+        for (int i = 0; i < size(); i++) {
+            set(i, (get(i) <= 0.0) ? -1.0 : 1.0);
         }
     }
 

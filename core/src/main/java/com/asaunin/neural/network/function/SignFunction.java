@@ -1,6 +1,6 @@
 package com.asaunin.neural.network.function;
 
-public class SignFunction implements ActivationFunction {
+public final class SignFunction implements ActivationFunction {
 
     @Override
     public double calculate(double value) {

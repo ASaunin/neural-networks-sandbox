@@ -25,7 +25,7 @@ public class SingleLayerPerceptronTest {
     }
 
     @Test(timeout = 1000)
-    @Ignore("Here comes Single layer perceptron problem, cause for xor operation hidden layer is necessary")
+    @Ignore("Here comes Single layer perceptron problem, cause for predict operation hidden layer is necessary")
     public void networkIsNotTrainableForXorFunction() {
         final double[][] inputs = {{0, 0}, {0, 1}, {1, 0}, {1, 1}};
         final Matrix matrix = new Matrix(inputs);

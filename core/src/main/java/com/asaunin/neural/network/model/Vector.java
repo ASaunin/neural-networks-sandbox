@@ -1,19 +1,25 @@
 package com.asaunin.neural.network.model;
 
 import com.asaunin.neural.network.function.ActivationFunction;
+import lombok.Getter;
 import lombok.ToString;
 
-@ToString
-public class Vector {
+import java.util.Arrays;
+import java.util.StringJoiner;
+import java.util.function.Function;
 
-    protected double[] values;
+@Getter
+@ToString
+public class Vector implements Function<ActivationFunction, Vector> {
+
+    private final double[] values;
 
     public Vector(double[] values) {
-        this.values = values;
+        this.values = Arrays.copyOf(values, values.length);
     }
 
     public Vector(int size) {
-        this(new double[size]);
+        this.values = new double[size];
     }
 
     public static Vector of(int... pattern) {
@@ -46,9 +52,19 @@ public class Vector {
         values[index] = value;
     }
 
-    public <T extends ActivationFunction> Vector apply(T func) {
-        values = func.calculate(values);
+    @Override
+    public Vector apply(ActivationFunction func) {
+        func.calculate(values);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        final StringJoiner joiner = new StringJoiner(", ", "[", "]");
+        for (double value : values) {
+            joiner.add(String.valueOf(value));
+        }
+        return joiner.toString();
     }
 
 }
