@@ -2,14 +2,12 @@ package com.asaunin.neural.network.model;
 
 import com.asaunin.neural.network.function.ActivationFunction;
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
 import java.util.function.Function;
 
 @Getter
-@ToString
 public class Vector implements Function<ActivationFunction, Vector> {
 
     private final double[] values;
@@ -27,6 +25,12 @@ public class Vector implements Function<ActivationFunction, Vector> {
         for (int i = 0; i < pattern.length; i++) {
             doubles[i] = pattern[i];
         }
+        return new Vector(doubles);
+    }
+
+    public static Vector of(double... pattern) {
+        final double[] doubles = new double[pattern.length];
+        System.arraycopy(pattern, 0, doubles, 0, pattern.length);
         return new Vector(doubles);
     }
 
