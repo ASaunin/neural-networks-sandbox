@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.IntStream;
 
 @Slf4j
 public class BackPropagationNetwork {
@@ -35,21 +37,17 @@ public class BackPropagationNetwork {
         return inputActivation;
     }
 
-    public void train(List<Vector> inputs, List<Vector> outputs) {
-        for (int iteration = 0; iteration < maxIterations; iteration++) {
-            for (int i = 0; i < outputs.size(); i++) {
-                train(inputs.get(i), outputs.get(i));
-            }
+    public void train(Map<Vector, Vector> data) {
+        IntStream.range(0, maxIterations).forEach(iteration -> {
+            data.forEach(this::train);
 
-            for (int i = 0; i < outputs.size(); i++) {
-                final Vector input = inputs.get(i);
-                final Vector output = predict(input);
-                if (iteration % (maxIterations / 100) == 0) {
-                    log.info("Train iteration: {}, Inputs: {}, Outputs: {}", iteration, input, output);
+            data.forEach((input, output) -> {
+                final Vector result = predict(input);
+                if (iteration % (maxIterations / 10) == 0) {
+                    log.info("Train iteration: {}, Inputs: {}, Outputs: {}", iteration, input, result);
                 }
-            }
-        }
-
+            });
+        });
     }
 
     private void train(Vector input, Vector output) {

@@ -1,13 +1,16 @@
 dependencies {
 
     compile(
-            ['org.slf4j:slf4j-api:1.7.19'],
-            ['org.projectlombok:lombok:1.16.18']
+            ["org.slf4j:slf4j-api:${slf4jVersion}"],
+            ["ch.qos.logback:logback-classic:${logbackVersion}"],
+            ["org.projectlombok:lombok:${lombokVersion}"]
     )
 
     testOutput(
-            ['junit:junit:4.12'],
-            ['org.assertj:assertj-core:3.8.0']
+            ["org.junit.jupiter:junit-jupiter-api:${junitVersion}"],
+            ["org.junit.jupiter:junit-jupiter-engine:${junitVersion}"],
+            ["org.junit.jupiter:junit-jupiter-params:${junitVersion}"],
+            ["org.assertj:assertj-core:${assertjVersion}"]
     )
 
 }

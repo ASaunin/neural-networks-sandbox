@@ -1,7 +1,7 @@
 subprojects {
 
-    group 'com.asaunin'
-    version '1.0-SNAPSHOT'
+    group = "${group}"
+    version "${version}"
 
     apply plugin: 'java'
 
