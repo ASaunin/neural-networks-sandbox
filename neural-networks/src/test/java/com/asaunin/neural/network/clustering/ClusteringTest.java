@@ -1,5 +1,6 @@
-package com.asaunin.neural.network.feedforward;
+package com.asaunin.neural.network.clustering;
 
+import com.asaunin.neural.network.feedforward.BackPropagationNetwork;
 import com.asaunin.neural.network.model.Vector;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,14 +71,14 @@ class ClusteringTest {
         final double thirdGroupPrediction = output.get(2);
         log.info("For input: {}, predictions by groups are: first={}%, second={}%, third={}%",
                 input,
-                String.format("%.2f", 100*firstGroupPrediction),
-                String.format("%.2f", 100*secondGroupPrediction),
-                String.format("%.2f", 100*thirdGroupPrediction));
+                String.format("%.2f", 100 * firstGroupPrediction),
+                String.format("%.2f", 100 * secondGroupPrediction),
+                String.format("%.2f", 100 * thirdGroupPrediction));
 
-        final double accuracy = 0.05;
-        assertThat(firstGroupPrediction).isCloseTo(1, within(accuracy));
-        assertThat(secondGroupPrediction).isCloseTo(0, within(accuracy));
-        assertThat(thirdGroupPrediction).isCloseTo(0, within(accuracy));
+        final double error_probability = 0.05;
+        assertThat(firstGroupPrediction).isCloseTo(1, within(error_probability));
+        assertThat(secondGroupPrediction).isCloseTo(0, within(error_probability));
+        assertThat(thirdGroupPrediction).isCloseTo(0, within(error_probability));
     }
 
 }

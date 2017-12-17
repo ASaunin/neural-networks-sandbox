@@ -29,7 +29,7 @@ class BinaryOrTest extends BinaryOperationTest {
     private static final double LEARNING_RATE = 0.3;
     private static final double MOMENTUM = 0.6;
     private static final int ITERATIONS = 500000;
-    private static final double ACCURACY = 0.05;
+    private static final double ERROR_PROBABILITY = 0.05;
 
     BinaryOrTest() {
         super(builder -> builder
@@ -58,7 +58,7 @@ class BinaryOrTest extends BinaryOperationTest {
         final double actualResult = actualOutput.get(0);
         final double expectedResult = expectedOutput.get(0);
 
-        assertThat(actualResult).isCloseTo(expectedResult, within(ACCURACY));
+        assertThat(actualResult).isCloseTo(expectedResult, within(ERROR_PROBABILITY));
     }
 
     private static Stream<Map.Entry<Vector, Vector>> dataProvider() {

@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Slf4j
 @DisplayName("Digit OCR example")
-class DigitRecognitionTest {
+class DigitsRecognitionTest {
 
     private static final int INPUTS_SIZE = 64;
     private static final int OUTPUTS_SIZE = 10;
@@ -30,7 +30,7 @@ class DigitRecognitionTest {
     private final BackPropagationNetwork network;
     private final ImageReader reader = new ImageReader();
 
-    DigitRecognitionTest() {
+    DigitsRecognitionTest() {
         this.network = BackPropagationNetwork.builder()
                 .addInputLayer(INPUTS_SIZE)
                 .addHiddenLayer(HIDDEN_SIZE)
