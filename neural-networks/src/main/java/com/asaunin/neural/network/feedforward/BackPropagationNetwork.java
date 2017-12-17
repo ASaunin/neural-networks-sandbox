@@ -50,7 +50,7 @@ public class BackPropagationNetwork {
         });
     }
 
-    private void train(Vector input, Vector output) {
+    public void train(Vector input, Vector output) {
         final Vector calculatedOutput = predict(input);
         Vector error = new Vector(calculatedOutput.size());
 
